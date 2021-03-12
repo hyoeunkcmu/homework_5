@@ -184,8 +184,8 @@ ul {
 }
 
 .product-text-container {
-  padding-right: 0.6rem;
-  padding-left: 0.4rem;
+  padding-right: 1rem;
+  padding-left: 0.8rem;
 }
 
 .cards-container a {
@@ -338,8 +338,19 @@ ul {
   justify-content: space-between;
 }
 
+.menu-text-container-detail {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: var(--gold);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
 .arrow-icon {
-  width: 8px;
+  width: 10px;
   height: 14px;
   vertical-align: center;
 }
@@ -348,6 +359,15 @@ ul {
   display: flex;
   flex-direction: row;
   width: 110px;
+  justify-content: space-between;
+  vertical-align: center;
+  /* border: 5px solid red; */
+}
+
+.menu-text-container-detail .left {
+  display: flex;
+  flex-direction: row;
+  width: 180px;
   justify-content: space-between;
   vertical-align: center;
   /* border: 5px solid red; */
@@ -371,6 +391,8 @@ ul {
   padding-bottom: 1.5rem;
 }
 
+
+
 /* product detail page */
 
 .option {
@@ -388,6 +410,12 @@ ul {
 .product-option .sub-title{
   margin-bottom: 1rem;
 }
+
+.product-option .sub-title-qty{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 
 .option-container .product-img {
   display: flex;
@@ -415,10 +443,74 @@ ul {
   padding-bottom: 2rem;
 }
 
-.product-option .sub-title {
+.product-option .sub-title, .sub-title-qty {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  text-align: center;
+}
+
+.glazing-title {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-gap: 5px;
+}
+
+.glazing-title .sub-title {
+  justify-self: end;
+}
+
+.tooltip .fas {
+  justify-self: start;
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* ref: https://www.w3schools.com/css/css_tooltip.asp */
+
+.tooltip {
+  position: relative;
+  display: flex;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--gold);
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 10%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.tooltip .tooltiptext::after{
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -7px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--gold) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.option-glazing {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -427,18 +519,10 @@ ul {
   border: 2px solid var(--gold);
   color: var(--lightBlack);
   font-family: "Roboto", sans-serif;
-  font-size: 10px;
   padding: 15px, 32px;
-  width: 25%;
+  width: 120px;
   height: 60px;
   text-align: center;
-  /* display: inline-block; */
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 0px;
-  float: left;
-  clear: right;
-  overflow: auto;
 }
 
 .option-glazing .btn:not(:last-child) {
@@ -463,7 +547,7 @@ ul {
   text-align: center;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   padding: 1rem 8rem 1rem 8rem;
   border: none;
@@ -483,14 +567,14 @@ ul {
 }
 
 .detail {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 .detail-container {
-  width: 60%;
   padding: 1rem;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }

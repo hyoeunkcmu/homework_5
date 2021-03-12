@@ -27,9 +27,6 @@ img {
   height: auto;
 }
 
-
-/* margin */
-
 ul {
   list-style-type: none;
 }
@@ -104,7 +101,7 @@ ul {
 #previousBtn {
   position: absolute;
   top: 50%;
-  z-index: 0.5;
+  z-index: 1;
   left: 1%;
   font-size: 50px;
   color: white;
@@ -115,7 +112,7 @@ ul {
 #nextBtn {
   position: absolute;
   top: 50%;
-  z-index: 0.5;
+  z-index: 1;
   right: 1%;
   font-size: 50px;
   color: white;
@@ -409,7 +406,6 @@ ul {
 
 .menu-text-container .fas {
   padding-left: 1rem;
-  /* padding-top: 0.2rem; */
 }
 
 #sort {
@@ -419,8 +415,6 @@ ul {
 .menu-text-container .fas .fa-sort-down {
   padding-bottom: 1.5rem;
 }
-
-
 
 /* product detail page */
 
@@ -444,7 +438,6 @@ ul {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-
 
 .option-container .product-img {
   display: flex;
@@ -495,7 +488,7 @@ ul {
   font-size: 0.8rem;
 }
 
-/* ref: https://www.w3schools.com/css/css_tooltip.asp */
+/* tooltip ref: https://www.w3schools.com/css/css_tooltip.asp */
 
 .tooltip {
   position: relative;
@@ -548,7 +541,7 @@ ul {
   border: 2px solid var(--gold);
   color: var(--lightBlack);
   font-family: "Roboto", sans-serif;
-  padding: 15px, 32px;
+  padding: 15px;
   width: 120px;
   height: 60px;
   text-align: center;
@@ -594,6 +587,8 @@ ul {
   outline: none;
   background-color: var(--darkPink);
 }
+
+/* detail page */
 
 .detail {
   max-width: 1200px;
@@ -675,7 +670,6 @@ ul {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: var(--gold);
-  /* font-weight: 500; */
 }
 
 .review-info {

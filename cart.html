@@ -22,189 +22,125 @@
     </nav>
   </div>
   <div class="main">
-    <!-- Product detail image -->
-    <div class="option">
-      <div class="option-container">
-        <div class="product-img">
-          <i class="fas fa-chevron-left"></i>
-          <img src="images/product-detail.png" alt="original">
-          <i class="fas fa-chevron-right"></i>
+    <div class="cart-top">
+      <div class="title">2 items in your cart</div>
+      <a href="menu.html"><div class="keep-shopping">KEEP SHOPPING</div></a>
+    </div>
+
+    <div class="cart-item">
+      <div class="item-container product-title">
+        <div class="item-1">
+          <label class="container">
+            <div class="checkbox-container">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </div>
+            <img src="images/cart_original.png" alt="original">
+            <div class="text-container">
+              <div class="title-price">
+                <div class="product-title">Original</div>
+                <div class="product-title">$7</div>
+              </div>           
+              <div class="glazing-option">
+                <b>Glazing:</b> None
+              </div>
+              <div class="stock">In Stock</div>
+              <div class="gift">
+                <label class="container-gift">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                  This is a gift
+                </label>
+              </div>
+              <div class="text-btn">
+                <div id="edit">Edit</div>
+                <div id="delete">Delete</div>
+                <div id="save">Save for Later</div>
+              </div>
+            </div>
+          </label>
         </div>
-        <!-- Product option selection -->
-        <div class="product-option">
-          <div>
-            <div class="title">Original</div>
-            <div class="glazing-title">
-              <div class="sub-title">Glazing</div>
-              <div class="tooltip">
-                <i class="fas fa-question-circle tooltip"></i>
-                  <span class="tooltiptext">$5 for each option</span>
+        <div class="item-2">
+          <label class="container">
+            <div class="checkbox-container">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </div>
+            <img src="images/cart_walnut.png" alt="walnut">
+            <div class="text-container">
+              <div class="title-price">
+                <div class="product-title">Walnut</div>
+                <div class="product-title">$10</div>
+              </div>
+            
+              <div class="glazing-option">
+                <b>Glazing:</b> None
+              </div>
+              <div class="stock">In Stock</div>
+              <div class="gift">
+                <label class="container-gift">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                  This is a gift
+                </label>
+              </div>
+              <div class="text-btn">
+                <div id="edit">Edit</div>
+                <div id="delete">Delete</div>
+                <div id="save">Save for Later</div>
               </div>
             </div>
-              <div class="option-glazing">
-                <button class="btn">None</button>
-                <button class="btn">Sugar-milk</button>
-                <button class="btn">Vanila-milk</button>
-                <button class="btn">Double Chocolate</button>
+          </label>
+        </div>
+        <div class="subtotal" id="bottom">Subtotal: $17</div>
+      </div>
+      <div class="checkout-box">
+        <div class="subtotal">Subtotal: $17</div>
+        <button>Proceed to checkout</button>
+      </div>
+    </div>
+    
+    <div class="save-items">
+      <div class="cart-top">
+        <div class="title">Saved for Later</div>
+      </div>
+    </div>
+    <div class="cart-item" id=save-margin>
+      <div class="item-container product-title">
+        <div class="item-1">
+          <label class="container">
+            <div class="checkbox-container">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </div>
+            <img src="images/cart_blackberry.png" alt="blackberry">
+            <div class="text-container">
+              <div class="title-price">
+                <div class="product-title">Blackberry</div>
+                <div class="product-title">$10</div>
+              </div>           
+              <div class="glazing-option">
+                <b>Glazing:</b> None
               </div>
-            <div class="sub-title-qty">Qty</div>
-            <div class="option-glazing">
-              <button class="btn">1PK - $7</button>
-              <button class="btn">3PK - $21</button>
-              <button class="btn">6PK - $42</button>
-              <button class="btn">12PK - $84</button>
+              <div class="stock">In Stock</div>
+              <div class="gift">
+                <label class="container-gift">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                  This is a gift
+                </label>
+              </div>
+              <div class="text-btn">
+                <div id="edit">Edit</div>
+                <div id="delete">Delete</div>
+                <div id="save">Move to Cart</div>
+              </div>
             </div>
-          <div class="addToCart-btn">
-              <a href="cart.html"><button>Select size to add to cart</button></a>
-            </div>
-          </div>
+          </label>
         </div>
       </div>
     </div>
 
-    <!-- Text naviation -->
-    <div class="menu-text-container-detail">
-      <div class=left>
-        <p><a href="index.html">Home</a></p>
-        <img class=arrow-icon src="images/arrow.png" alt="arrpw">
-        <p><a href="menu.html">Menu</a></p>
-        <img class=arrow-icon src="images/arrow.png" alt="arrpw">
-        <p><a href="detail.html">Original</a></p>
-      </div>
-    </div>    
-
-    <!-- Product detail description -->
-    <div class="detail">
-      <div class="detail-container">
-        <div class="title">Original Cinnamon Roll</div>
-        <div class="description">
-          <p>Our original cinnamon rolls are one of the BEST breakfasts. 
-            You can make quick and easy cinnamon rolls or 
-            you can make cinnamon roll pancakes or bread pudding, 
-            but one of the most delicious way to serve cinnamon rolls 
-            is with our Special Cinnamon Roll recipe.</p>
-        </div>
-        <div class="box-container">
-          <div class="allergies-container">
-            <div class="title">
-              Allergies
-            </div>
-            <div class="right">
-              <div class="more">
-                More
-              </div>
-              <i class="fas fa-plus"></i>
-            </div>
-          </div>
-          <div class="allergies-container">
-            <div class="title">
-              Ingredients
-            </div>
-            <div class="right">
-              <div class="more">
-                More
-              </div>
-              <i class="fas fa-plus"></i>
-            </div>
-          </div>
-          <div class="allergies-container">
-            <div class="title">
-              Shipping Details
-            </div>
-            <div class="right">
-              <div class="more">
-                More
-              </div>
-              <i class="fas fa-plus"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Review section -->
-    <div class="detail-review">
-      <div class="title">Reviews</div>
-      <hr>
-      <div class="right">
-        <p>SORT BY: Best Selling Item</p>
-        <i class="fas fa-sort-down"></i>
-      </div>
-      
-      <div class="review-container">
-        <div class="user-info">
-          <img src="images/account_small.png" alt="account">
-          <div class="id"><p>user test IDs</p></div>
-          <div class="date">Apr 5, 2021</div>
-        </div>
-        <div class="review-info">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="glazing-option">
-            <b>Glazing:</b> None
-          </div>
-          <div class="review-comment">
-            Totally Exceeded my expectations! So good. I love it.
-          </div>
-        </div>
-      </div>
-      <div class="review-container">
-        <div class="user-info">
-          <img src="images/account_small.png" alt="account">
-          <div class="id"><p>user test IDs</p></div>
-          <div class="date">Apr 5, 2021</div>
-        </div>
-        <div class="review-info">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="glazing-option">
-            <b>Glazing:</b> None
-          </div>
-          <div class="review-comment">
-            Totally Exceeded my expectations! So good. I love it.
-          </div>
-        </div>
-      </div>
-      <div class="review-container">
-        <div class="user-info">
-          <img src="images/account_small.png" alt="account">
-          <div class="id"><p>user test IDs</p></div>
-          <div class="date">Apr 5, 2021</div>
-        </div>
-        <div class="review-info">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="glazing-option">
-            <b>Glazing:</b> None
-          </div>
-          <div class="review-comment">
-            Totally Exceeded my expectations! So good. I love it.
-          </div>
-        </div>
-      </div>
-      <div class="pagination-center">
-        <div class="pagination">
-          <a class="active" href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-        </div>
-      </div>
-    </div>
 
     <!-- Recommendation section -->
     <div class="you-may-also-like">

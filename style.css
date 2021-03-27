@@ -571,7 +571,8 @@ ul {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  padding: 1rem 8rem 1rem 8rem;
+  width: 24rem;
+  padding: 1rem 0 1rem 0;
   border: none;
   margin: 2rem 1rem 2rem 1rem;
 }

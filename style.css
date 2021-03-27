@@ -583,7 +583,7 @@ ul {
   color: white;
 }
 
-.addToCart-btn button:focus {
+.addToCart-btn button:active {
   outline: none;
   background-color: var(--darkPink);
 }
@@ -638,13 +638,22 @@ ul {
   font-weight: 400;
 }
 
-.allergies-container {
+.allergies-head {
   border-bottom: 2px solid var(--darkPink);
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 1.5rem;
+}
+
+.detail-content {
+  overflow: hidden;
+  max-height: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--lightBlack);
 }
 
 /* detail page review */

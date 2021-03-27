@@ -6,6 +6,8 @@
   <title>BunBun Bakery</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <!-- javascript -->
+  <!-- <script src="main.js" type="text/javascript"></script> -->
 </head>
 
 <body>
@@ -42,7 +44,7 @@
               </div>
             </div>
               <div class="option-glazing">
-                <button class="btn">None</button>
+                <button class="btn" id="default">None</button>
                 <button class="btn">Sugar-milk</button>
                 <button class="btn">Vanila-milk</button>
                 <button class="btn">Double Chocolate</button>
@@ -85,37 +87,52 @@
             is with our Special Cinnamon Roll recipe.</p>
         </div>
         <div class="box-container">
-          <div class="allergies-container">
-            <div class="title">
-              Allergies
-            </div>
-            <div class="right">
-              <div class="more">
-                More
+          <div class="detail-container" id="allergies">
+            <div class="allergies-head">
+              <div class="title">
+                Allergies
               </div>
-              <i class="fas fa-plus"></i>
+              <div class="right">
+                <div class="more" id="test">
+                  More
+                </div>
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="detail-content">
+              BunBun Bakery's Cinnamon Rolls are made by hand using shared equipment, which processes dairy, peanuts, soy, tree nuts and wheat. If you have a severe allergy, please know that while we do our best to prevent cross-contamination, we are not an allergy-free bakery.
             </div>
           </div>
-          <div class="allergies-container">
-            <div class="title">
-              Ingredients
-            </div>
-            <div class="right">
-              <div class="more">
-                More
+          <div class="detail-container" id="ingredients">
+            <div class="allergies-head">
+              <div class="title">
+                Ingredients
               </div>
-              <i class="fas fa-plus"></i>
+              <div class="right">
+                <div class="more">
+                  More
+                </div>
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="detail-content">
+              Flour, cinnamon, sugar, and butter
             </div>
           </div>
-          <div class="allergies-container">
-            <div class="title">
-              Shipping Details
-            </div>
-            <div class="right">
-              <div class="more">
-                More
+          <div class="detail-container" id="shipping">
+            <div class="allergies-head">
+              <div class="title">
+                Shipping Details
               </div>
-              <i class="fas fa-plus"></i>
+              <div class="right">
+                <div class="more">
+                  More
+                </div>
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="detail-content">
+              All of our cinnamon rolls are baked daily in small batches and hand packaged to order in our gift boxes. Please refer to our Shipping guidelines to ensure your cinnamon rolls arrive when you need them.
             </div>
           </div>
         </div>
@@ -341,5 +358,6 @@
       </div>
     </div>
   </div>
+  <script src="main.js" type="text/javascript"></script>
 </body>
 </html>

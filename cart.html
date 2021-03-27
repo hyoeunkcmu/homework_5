@@ -6,6 +6,8 @@
   <title>BunBun Bakery</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <!-- javascript -->
+  <script src="main.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@
     </div>
 
     <div class="cart-item">
-      <div class="item-container product-title">
+      <div class="item-container product-title" id="item-list">
         <div class="item-1">
           <label class="container">
             <div class="checkbox-container">
@@ -53,8 +55,8 @@
                 </label>
               </div>
               <div class="text-btn">
-                <div id="edit">Edit</div>
-                <div id="delete">Delete</div>
+                <div id="edit" onclick="deleteListItem()">Edit</div>
+                <div id="delete" onclick="deleteListItem(this.parentNode)">Delete</div>
                 <div id="save">Save for Later</div>
               </div>
             </div>
@@ -110,7 +112,7 @@
         <div class="item-1">
           <label class="container">
             <div class="checkbox-container">
-              <input type="checkbox" checked="checked">
+              <input type="checkbox">
               <span class="checkmark"></span>
             </div>
             <img src="images/cart_blackberry.png" alt="blackberry">

@@ -1,3 +1,59 @@
+// Carousel Ref:https://youtu.be/KcdBOoK3Pfw
+// Index-page image carousel
+const carouselSlide = document.querySelector('.carousel-slide');
+const carouselImages = document.querySelectorAll('.carousel-slide img');
+
+//buttons
+const prevBtn = document.querySelector('#previousBtn');
+const nextBtn = document.querySelector('#nextBtn');
+
+//counter
+let counter = 1;
+const size = carouselImages[0].clientWidth;
+
+carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+//button listeners
+nextBtn.addEventListener('click', ()=>{
+    if(carouselImages[counter].id === 'lastClone'){
+        carouselSlide.style.transition = "none";
+        counter = carouselImages.length - 2;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    else if(carouselImages[counter].id === 'firstClone'){
+        carouselSlide.style.transition = "none";
+        counter = carouselImages.length - counter;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    else {
+        carouselSlide.style.transition = "transform 0.4s ease-in-out";
+        counter++;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+});
+
+prevBtn.addEventListener('click', ()=>{
+    if(carouselImages[counter].id === 'lastClone'){
+        carouselSlide.style.transition = "none";
+        counter = carouselImages.length - 2;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    else if(carouselImages[counter].id === 'firstClone'){
+        carouselSlide.style.transition = "none";
+        counter = carouselImages.length - counter;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+    else {
+        carouselSlide.style.transition = "transform 0.4s ease-in-out";
+        counter--;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+});
+
+// detail-page image carousel
+
+
+
 // detail-page option button
 
 var glazingArray = document.querySelectorAll('.glazing');
@@ -78,6 +134,28 @@ function getQtyPrice(item) {
     var priceText = qtyText.slice(dollarStrIndex+1, lastStrIndex);
     return parseInt(priceText);
 }
+
+// alert if user click add to cart without qty
+
+// document.getElementById("addToCartBtn").addEventListener("click", cartAlert);
+
+// function cartAlert() {
+//     var cartBtn = document.getElementById("addToCartBtn");
+//     console.log(cartBtn);
+//     for (let i = 0; i < qtyArray.length; i++){
+//         console.log("test");
+//         if (qtyArray[i].style.background === "#A5927B"){
+//             console.log(qtyArray[i].id);
+//             cartBtn.getAttribute("href");
+//             cartBtn.setAttribute("href", "cart.html")
+//         }
+//         else { 
+//             alert ("You must select a qty");
+//             return
+//         };
+//     };
+// }
+
 
 // detail-page toggle on off information
 

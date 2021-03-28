@@ -6,8 +6,6 @@
   <title>BunBun Bakery</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="style.css" type="text/css">
-  <!-- javascript -->
-  <!-- <script src="main.js" type="text/javascript"></script> -->
 </head>
 
 <body>
@@ -22,7 +20,11 @@
         <li><a href="menu.html" class="nav-links">Menu</a></li>
         <li><a href="info.html" class="nav-links">Hours & Locations</a></li>
         <li><a href="#" class="account-icon"><img src="images/account_2.png" alt="account"></a></li>
-        <li><a href="#" class="cart-icon"><img src="images/cart_2.png" alt="cart"></a></li>
+        <div id="ex4">
+          <span class="p1 fa-stack fa-2x has-badge" data-count="0">
+          <i class="p3 fa fa-shopping-cart fa-stack-1x xfa-inverse" data-count="4b"></i>
+          </span> <!--cart icon ref https://codepen.io/jmalatia/pen/MJaVxL -->
+        </div>
       </ul>
     </nav>
   </div>
@@ -34,7 +36,6 @@
       <i class="fas fa-chevron-right" id="nextBtn"></i>
       <i class="fas fa-chevron-left" id="previousBtn"></i>
       <div class="carousel-slide">
-        <!-- <img src="images/slide3.png" id="lastClone" alt="present"> -->
         <img src="images/slide3.png" alt="present" id="lastClone">
         <img src="images/slide1.png" alt="rolls">
         <img src="images/slide2.png" alt="glazing">
@@ -53,7 +54,7 @@
       <!-- product cards -->
       <div class="menu-container">
         <div class="cards-container">
-          <a href="#">
+          <a href="detail.html">
             <div class="card-container card1">
               <img src="images/original.png" alt="original">
               <div class="product-text-container">

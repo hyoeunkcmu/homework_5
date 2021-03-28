@@ -19,7 +19,11 @@
         <li><a href="menu.html" class="nav-links">Menu</a></li>
         <li><a href="info.html" class="nav-links">Hours & Locations</a></li>
         <li><a href="#" class="account-icon"><img src="images/account_2.png" alt="account"></a></li>
-        <li><a href="#" class="cart-icon"><img src="images/cart_2.png" alt="cart"></a></li>
+        <div id="ex4">
+          <span class="p1 fa-stack fa-2x has-badge" data-count="2">
+          <i class="p3 fa fa-shopping-cart fa-stack-1x xfa-inverse" data-count="4b"></i>
+          </span> <!--cart icon ref https://codepen.io/jmalatia/pen/MJaVxL -->
+        </div>
       </ul>
     </nav>
   </div>
@@ -27,11 +31,18 @@
     <!-- Product detail image -->
     <div class="option">
       <div class="option-container">
-        <div class="product-img">
-          <i class="fas fa-chevron-left"></i>
-          <img src="images/product-detail.png" alt="original">
-          <i class="fas fa-chevron-right"></i>
+        <div class="product-carousel-container">
+          <i class="fas fa-chevron-left" id="product-previousBtn"></i>
+          <i class="fas fa-chevron-right" id="product-nextBtn"></i> 
+          <div class="product-carousel-slide">
+            <img src="images/product-detail3.png" alt="original3" id="lastClone">
+            <img src="images/product-detail.png" alt="original">
+            <img src="images/product-detail2.png" alt="original2">
+            <img src="images/product-detail3.png" alt="original3">
+            <img src="images/product-detail.png" alt="original" id="firstClone">
+          </div>     
         </div>
+
         <!-- Product option selection -->
         <div class="product-option">
           <div>
@@ -358,6 +369,6 @@
       </div>
     </div>
   </div>
-  <script src="main.js" type="text/javascript"></script>
+  <script src="detail.js" type="text/javascript"></script>
 </body>
 </html>

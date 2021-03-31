@@ -57,3 +57,7 @@ if (badgeToggle === "1"){
     var x = document.getElementById("badge");
     x.style.visibility = "visible";
 }
+
+localStorage.setItem("default", '1');
+var badgeValue = localStorage.getItem("default");
+document.getElementById("badge").innerHTML = badgeValue;

@@ -114,13 +114,13 @@ function getQtyPrice(item) {
 var cartBtn = document.getElementById("addToCartBtn");
 cartBtn.addEventListener("click", () =>{
     cartAlert();
-    activateBadge();
 });
 
 // alert if user click add to cart without qty
 function cartAlert() {
     for (let i=0; i < qtyArray.length; i++){
         if (qtyArray[i].id === "qty_activated"){
+            activateBadge();
             document.location.href = "cart.html";
             return true;
         }
@@ -131,7 +131,13 @@ function cartAlert() {
 // activate shoping cart badge
 function activateBadge() {
     localStorage.setItem("mycartBadge", '1');
+    var y = document.getElementById("badge").innerHTML;
+    y = parseInt(y) + 1
+    localStorage.setItem("default", y);
 }
+
+var badgeValue = localStorage.getItem("default");
+document.getElementById("badge").innerHTML = badgeValue;
 
 var badgeToggle = localStorage.getItem("mycartBadge");
 if (badgeToggle === "1"){

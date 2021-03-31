@@ -20,7 +20,7 @@ window.onclick = function(event){
 
 // ref: https://youtu.be/Pt8f3GwD3N8
 
-var cat = {name:"Teru", weight:10, age:1.5};
+
 
 localStorage.setItem("cart", "5");
 localStorage.setItem("myCat", JSON.stringify(cat)); //save

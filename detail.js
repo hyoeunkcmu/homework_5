@@ -71,6 +71,7 @@ qtyArray.forEach(item => {
     });
 });
 
+// button toggle for glazing option
 function btnToggle(item) {
     for (let i=0; i < glazingArray.length; i++){
         if(glazingArray[i].id === "activated"){
@@ -90,6 +91,7 @@ var qtyPrice = 0;
 var sum = 0;
 
 function changeAddToCartText() {
+    isQtyOn = false;
     for (let i=0; i < glazingArray.length; i++){
         if(glazingArray[i].id === "activated" && glazingArray[i].innerHTML !== "None"){
             glazingPrice = 5;
@@ -100,14 +102,21 @@ function changeAddToCartText() {
     }
     for (let i=0; i < qtyArray.length; i++){
         if (qtyArray[i].id === "qty_activated"){
-            qtyPrice = getQtyPrice(qtyArray[i]);  
+            qtyPrice = getQtyPrice(qtyArray[i]);
+            isQtyOn = true;  
         }
     }
     sum = qtyPrice + glazingPrice;
     var btn = document.getElementById("addToCartBtn").firstChild;
-    btn.nodeValue = "Select size to add to cart" + " - $" + sum;
+    if (isQtyOn) {
+        btn.nodeValue = "Add to cart" + " - $" + sum;
+    }
+    else {
+        btn.nodeValue = "Select size to add to cart" + " - $" + sum;
+    }
 }
 
+// button toggle for qty option
 function qtyBtnToggle(item) {
     for (let i=0; i < qtyArray.length; i++){
         if(qtyArray[i].id === "qty_activated"){
@@ -122,6 +131,7 @@ function qtyBtnToggle(item) {
     changeAddToCartText()
 }
 
+// parse price text from option text
 function getQtyPrice(item) {
     var qtyText = item.innerHTML;
     var dollarStrIndex = qtyText.indexOf("$");
@@ -130,26 +140,27 @@ function getQtyPrice(item) {
     return parseInt(priceText);
 }
 
+var cartBtn = document.getElementById("addToCartBtn");
+cartBtn.addEventListener("click", () =>{
+    cartAlert();
+    activateBadge();
+});
+
 // alert if user click add to cart without qty
+function cartAlert() {
+    for (let i=0; i < qtyArray.length; i++){
+        if (qtyArray[i].id === "qty_activated"){
+            document.location.href = "cart.html";
+            return true;
+        }
+    };
+    alert("You must select size");
+}
 
-// document.getElementById("addToCartBtn").addEventListener("click", cartAlert);
+// activate shoping cart badge
+function activateBadge() {
 
-// function cartAlert() {
-//     var cartBtn = document.getElementById("addToCartBtn");
-//     console.log(cartBtn);
-//     for (let i = 0; i < qtyArray.length; i++){
-//         console.log("test");
-//         if (qtyArray[i].style.background === "#A5927B"){
-//             console.log(qtyArray[i].id);
-//             cartBtn.getAttribute("href");
-//             cartBtn.setAttribute("href", "cart.html")
-//         }
-//         else { 
-//             alert ("You must select a qty");
-//             return
-//         };
-//     };
-// }
+}
 
 
 // detail-page toggle on off information

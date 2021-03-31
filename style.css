@@ -55,8 +55,27 @@ ul {
   margin: 0 auto;
 }
 
-#ex4 {
-  margin: 0 -0.5rem 0 -2rem;
+.cart-badge {
+  color: var(--darkPink);
+  text-decoration: none;
+  padding: 15px 1rem;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  font-size: 1.5rem;
+}
+
+#badge {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 4px 8px;
+  border-radius: 50%;
+  background: var(--darkPink);
+  color: white;
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif;
 }
 
 
@@ -602,6 +621,7 @@ ul {
   background-color: var(--gold);
   outline: none;
   color: white;
+  outline: none;
 }
 
 .addToCart-btn button {
@@ -616,18 +636,6 @@ ul {
   padding: 1rem 0 1rem 0;
   border: none;
   margin: 2rem 1rem 2rem 1rem;
-}
-
-.addToCart-btn button:hover {
-  cursor: pointer;
-  background-color: var(--darkPink);
-  transition: all 0.2s ease-out;
-  color: white;
-}
-
-.addToCart-btn button:active {
-  outline: none;
-  background-color: var(--darkPink);
 }
 
 /* detail page */

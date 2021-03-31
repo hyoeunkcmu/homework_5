@@ -1170,3 +1170,31 @@ ul {
 }
 
 /* checkbox */
+/* https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */
+
+INPUT[type=checkbox]:focus
+{
+    outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+INPUT[type=checkbox]
+{
+    background-color: #DDD;
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+    vertical-align: baseline;
+    margin: 0px 0.5rem 0px 0px;
+}
+
+INPUT[type=checkbox]:checked
+{
+    background-color: var(--gold);
+    background: var(--gold) url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 2px 2px no-repeat;
+}

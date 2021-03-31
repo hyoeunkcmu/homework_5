@@ -20,9 +20,24 @@ window.onclick = function(event){
 
 // ref: https://youtu.be/Pt8f3GwD3N8
 
+// unique id, glazing, qty, total price
+// cart item list
+// saved for later list
 
+function Item(name, glazing, qty, price) {
+    this.name = name;
+    this.glazing = glazing;
+    this.qty = qty;
+    this.price = price;
+}
 
-localStorage.setItem("cart", "5");
-localStorage.setItem("myCat", JSON.stringify(cat)); //save
-JSON.parse(localStorage.getItem("myCat")); //Retrieve
+// localStorage.clear();
 
+var original = new Item("Original", "None", "1PK", "$7");
+localStorage.setItem("myItem", JSON.stringify(original));
+
+var badgeToggle = localStorage.getItem("mycartBadge");
+if (badgeToggle === "1"){
+    var x = document.getElementById("badge");
+    x.style.visibility = "visible";
+}

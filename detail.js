@@ -1,55 +1,3 @@
-// detail-page image carousel
-// Carousel Ref:https://youtu.be/KcdBOoK3Pfw
-const productCarouselSlide = document.querySelector('.product-carousel-slide');
-const productCarouselImages = document.querySelectorAll('.product-carousel-slide img');
-
-//buttons
-const productPrevBtn = document.querySelector('#product-previousBtn');
-const productNextBtn = document.querySelector('#product-nextBtn');
-
-//counter
-let counter = 1;
-const imageSize = productCarouselImages[0].clientWidth;
-
-productCarouselSlide.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-
-//button listeners
-productNextBtn.addEventListener('click', ()=>{
-    if(productCarouselImages[counter].id === 'lastClone'){
-        productCarouselImages.style.transition = "none";
-        counter = productCarouselImages.length - 2;
-        productCarouselImages.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-    else if(productCarouselImages[counter].id === 'firstClone'){
-        productCarouselImages.style.transition = "none";
-        counter = productCarouselImages.length - counter;
-        productCarouselImages.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-    else {
-        productCarouselSlide.style.transition = "transform 0.4s ease-in-out";
-        counter++;
-        productCarouselSlide.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-});
-
-productPrevBtn.addEventListener('click', ()=>{
-    if(productCarouselImages[counter].id === 'lastClone'){
-        productCarouselSlide.style.transition = "none";
-        counter = productCarouselImages.length - 2;
-        productCarouselSlide.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-    else if(productCarouselImages[counter].id === 'firstClone'){
-        productCarouselSlide.style.transition = "none";
-        counter = productCarouselImages.length - counter;
-        productCarouselSlide.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-    else {
-        productCarouselSlide.style.transition = "transform 0.4s ease-in-out";
-        counter--;
-        productCarouselSlide.style.transform = 'translateX(' + (-imageSize * counter) + 'px)';
-    }
-});
-
 // detail-page option button
 var glazingArray = document.querySelectorAll('.glazing');
 var qtyArray = document.querySelectorAll('.qty');
@@ -84,6 +32,7 @@ function btnToggle(item) {
     item.style.background = "#A5927B";
     item.style.color = "white";
     changeAddToCartText()
+    changeImages()
 }
 
 var glazingPrice = 0;
@@ -113,6 +62,28 @@ function changeAddToCartText() {
     }
     else {
         btn.nodeValue = "Select size to add to cart" + " - $" + sum;
+    }
+}
+
+// update product detial images
+function changeImages(){
+    var count = 0
+    for (let i=0; i < glazingArray.length; i++){
+        if(glazingArray[i].id === "activated"){
+            count = i;
+        };
+    };    
+    if (count === 0){
+        document.getElementById("images").src = "images/product-detail.png";
+    }
+    else if (count === 1){
+        document.getElementById("images").src = "images/product-detail2.png";
+    }
+    else if (count === 2){
+        document.getElementById("images").src = "images/product-detail3.png";
+    }
+    else if (count === 3){
+        document.getElementById("images").src = "images/product-detail4.png";
     }
 }
 
@@ -159,9 +130,14 @@ function cartAlert() {
 
 // activate shoping cart badge
 function activateBadge() {
-
+    localStorage.setItem("mycartBadge", '1');
 }
 
+var badgeToggle = localStorage.getItem("mycartBadge");
+if (badgeToggle === "1"){
+    var x = document.getElementById("badge");
+    x.style.visibility = "visible";
+}
 
 // detail-page toggle on off information
 

@@ -154,7 +154,41 @@ for (let i = 0; i < editCartItemButtons.length; i++){
     })
 }
 
+// Save for later
+var saveForLaterButtons = document.getElementsByClassName("save");
+var moveItemIndex;
+var saveForLaterArray = []
+
+for (let i = 0; i < saveForLaterButtons.length; i++){
+    let button = saveForLaterButtons[i];
+    button.addEventListener('click', function(event) {
+        let buttonClicked = event.target;
+        let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
+        moveItemIndex = i;
+        let items = JSON.parse(localStorage.getItem("items"));
+        items.splice(moveItemIndex, 1);
+        localStorage.setItem('items', JSON.stringify(items));
+        item.remove();
+        saveForLaterArray.push(item);
+        moveToSaveForLater();
+        updateCartTotal();
+        updateCartBadge();
+    })
+}
+//get data of deleted item - save local storage / MVC
+
 // draw items - Saved for later
+function moveToSaveForLater() {
+    for (let i=0; i<saveForLaterArray.length; i++){
+        let cartRow = saveForLaterArray[i];
+        let cartItems = document.getElementsByClassName("item-container-2")[0];
+        cartItems.append(cartRow);
+        let save = cartRow.getElementsByClassName("save");
+        save[i].innerHTML = "Move to Cart";
+        save[i].className = "move";
+    }
+}
+
 
 // delete items - Saved for later
 

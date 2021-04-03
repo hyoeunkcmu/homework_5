@@ -67,11 +67,13 @@ function drawCartItems() {
     let glazing;
     let qty;
     let totalPrice;
-    for (let i=0; i < items.length; i++) {
-        glazing = items[i][0];
-        qty = items[i][1];
-        totalPrice = items[i][2];
-        addItemToCart(glazing, qty, totalPrice);
+    if (items !== null) {
+        for (let i=0; i < items.length; i++) {
+            glazing = items[i][0];
+            qty = items[i][1];
+            totalPrice = items[i][2];
+            addItemToCart(glazing, qty, totalPrice);
+        }
     }
 }
 
@@ -126,6 +128,7 @@ function addItemToCart(glazing, qty, totalPrice) {
 drawCartItems()
 updateCartTotal()
 updateCartBadge()
+drawSaveForLater()
 
 // delete items
 var removeCartItemButtons = document.getElementsByClassName("delete");
@@ -157,7 +160,6 @@ for (let i = 0; i < editCartItemButtons.length; i++){
 // Save for later
 var saveForLaterButtons = document.getElementsByClassName("save");
 var moveItemIndex;
-var saveForLaterArray = []
 
 for (let i = 0; i < saveForLaterButtons.length; i++){
     let button = saveForLaterButtons[i];
@@ -166,30 +168,111 @@ for (let i = 0; i < saveForLaterButtons.length; i++){
         let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
         moveItemIndex = i;
         let items = JSON.parse(localStorage.getItem("items"));
+        let saveItems = items[i];
+        addListInSave(saveItems);
         items.splice(moveItemIndex, 1);
         localStorage.setItem('items', JSON.stringify(items));
         item.remove();
-        saveForLaterArray.push(item);
-        moveToSaveForLater();
+        drawSaveForLater();
         updateCartTotal();
         updateCartBadge();
     })
 }
-//get data of deleted item - save local storage / MVC
 
-// draw items - Saved for later
-function moveToSaveForLater() {
-    for (let i=0; i<saveForLaterArray.length; i++){
-        let cartRow = saveForLaterArray[i];
-        let cartItems = document.getElementsByClassName("item-container-2")[0];
-        cartItems.append(cartRow);
-        let save = cartRow.getElementsByClassName("save");
-        save[i].innerHTML = "Move to Cart";
-        save[i].className = "move";
+var saveForLaterArray = [];
+function addListInSave(saveItems) {
+    let item = saveItems; //list
+    console.log(item);
+    if (JSON.parse(localStorage.getItem("cartItems")) !== null){
+        saveForLaterArray = JSON.parse(localStorage.getItem("cartItems"));
     }
+    saveForLaterArray.push(item);
+    localStorage.setItem("cartItems", JSON.stringify(saveForLaterArray));
+    console.log('list', JSON.parse(localStorage.getItem("cartItems")));
 }
 
+//draw items - Saved for later
+function drawSaveForLater() {
+    let items = JSON.parse(localStorage.getItem("cartItems"));
+    console.log('draw array: ', items);
+    let glazing;
+    let qty;
+    let totalPrice;
+    if (items !== null){
+        for (let i=0; i < items.length; i++) {
+            glazing = items[i][0];
+            qty = items[i][1];
+            totalPrice = items[i][2];
+        }
+    }
+    addItemToSaveForLater(glazing, qty, totalPrice);
+}
+
+function addItemToSaveForLater(glazing, qty, totalPrice) {
+    let cartRow = document.createElement('div');
+    let cartItems = document.getElementsByClassName("item-container-2")[0];
+    let cartRowContents = `
+    <div class="item-2">
+        <div class="container">
+            <div class="checkbox-container">
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </div>
+            <img src="images/cart_original.png" alt="original">
+            <div class="text-container">
+                <div class="title-price">
+                    <div class="product-title">Original</div>
+                    <div class="dropdown">
+                        <button onclick="dropdown()" class="dropbtn">Qty: 1 <i class="fas fa-sort-down"></i></button>
+                        <div id="myDropdown" class='dropdown-content'>
+                            <div>Qty: 2</div>
+                            <div>Qty: 3</div>
+                            <div>Qty: 4</div>
+                        </div>
+                    </div>                
+                    <div class="product-title">$${totalPrice}</div>
+                </div>
+                <div class="glazing-option">
+                    <b>Glazing:</b> ${glazing}
+                </div>
+                <div class="stock"><b>${qty}PK</b></div>
+                <div class="stock">In Stock</div>
+                <div class="gift">
+                    <label class="container-gift">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        This is a gift
+                    </label>
+                </div>
+                <div class="text-btn">
+                    <div class="edit">Edit</div>
+                    <div class="delete-2">Delete</div>
+                    <div class="move">Move to Cart</div>
+                </div>
+            </div>
+        </div>
+    </div>`
+    cartRow.innerHTML = cartRowContents;
+    cartItems.append(cartRow);
+}
 
 // delete items - Saved for later
+var removeSaveItemButtons = document.getElementsByClassName("delete-2");
+var deleteItemIndex2;
+for (let i = 0; i < removeSaveItemButtons.length; i++){
+    let button = removeSaveItemButtons[i];
+    button.addEventListener('click', function(event) {
+        let buttonClicked = event.target;
+        let item = buttonClicked.parentElement.parentElement.parentElement;
+        deleteItemIndex2 = i;
+        let items = JSON.parse(localStorage.getItem("cartItems"));
+        console.log("clicked");
+        items.splice(deleteItemIndex2, 1);
+        localStorage.setItem("cartItems", JSON.stringify(items));
+        console.log("array", JSON.parse(localStorage.getItem("cartItems")));
+        item.remove();
+    })
+}
 
+//Move to cart
 

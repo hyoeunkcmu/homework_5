@@ -121,12 +121,18 @@ cartBtn.addEventListener("click", () =>{
 var cartItems = [];
 
 function addItemInCart() {
+    let cartProductImages = ["images/cart_original.png", "images/cart_sugar.png", "images/cart_vanila.png", "images/cart_choco.png"];
     let glazing;
     let qty;
     let totalPrice;
+    let image;
     for (let i=0; i < glazingArray.length; i++){
         if(glazingArray[i].id === "activated"){
             glazing = glazingArray[i].innerHTML;
+            image = cartProductImages[i];
+        }
+        if(glazingArray[i].innerHTML === "None"){
+            image = cartProductImages[0];
         }
     }
     for (let i=0; i < qtyArray.length; i++){
@@ -136,7 +142,7 @@ function addItemInCart() {
         }
     }
     totalPrice = getQtyPrice(cartBtn);
-    var item = [glazing, qty, totalPrice];
+    var item = [glazing, qty, totalPrice, image];
     if (JSON.parse(localStorage.getItem("items")) !== null){
         cartItems = JSON.parse(localStorage.getItem("items"));
     }

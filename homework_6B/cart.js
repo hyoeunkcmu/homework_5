@@ -7,10 +7,10 @@ function dropdown() {
 
 window.onclick = function(event){
     if(!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
         for (i=0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
+            let openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
               openDropdown.classList.remove('show');
             }        
@@ -19,9 +19,9 @@ window.onclick = function(event){
 }
 
 // update cart total number header text
-function updateCartBadge(){
-    if (JSON.parse(localStorage.getItem("items")) !== null){
-        var totalNum = JSON.parse(localStorage.getItem("items")).length;
+function updateCartBadge(items){
+    if (items !== null){
+        var totalNum = items.length;
     }
     
     if (totalNum === undefined || totalNum === 0) {
@@ -44,10 +44,10 @@ function updateCartBadge(){
     document.getElementById("badge").innerHTML = totalNum;
 }
 
-function updateCartTotal() {
+function updateCartTotal(items) {
 //items = [glazing, qty, totalPrice];
     let totalPrice = 0;
-    if (JSON.parse(localStorage.getItem("items")) !== null){
+    if (items !== null){
         let items = JSON.parse(localStorage.getItem("items"));
         for (let i=0; i < items.length; i++) {
             totalPrice += parseInt(items[i][2]);
@@ -62,22 +62,26 @@ function updateCartTotal() {
 
 // ref: https://www.youtube.com/watch?v=YeFzkC2awTM
 // add cart items from cart array data
-function drawCartItems() {
-    let items = JSON.parse(localStorage.getItem("items"));
+function drawCartItems(items) {
     let glazing;
     let qty;
     let totalPrice;
+    let image;
     if (items !== null) {
         for (let i=0; i < items.length; i++) {
             glazing = items[i][0];
             qty = items[i][1];
             totalPrice = items[i][2];
-            addItemToCart(glazing, qty, totalPrice);
+            image = items[i][3];
+            addItemToCart(glazing, qty, totalPrice, image);
         }
     }
+    // Add onclick listener
+    addEventListeners()
+    addEditEventListeners()
 }
 
-function addItemToCart(glazing, qty, totalPrice) {
+function addItemToCart(glazing, qty, totalPrice, image) {
     let cartRow = document.createElement('div');
     let cartItems = document.getElementsByClassName("cart-items")[0];
     let cartRowContents = `
@@ -87,7 +91,7 @@ function addItemToCart(glazing, qty, totalPrice) {
                 <input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
             </div>
-            <img src="images/cart_original.png" alt="original">
+            <img src=${image} alt="original">
             <div class="text-container">
                 <div class="title-price">
                     <div class="product-title">Original</div>
@@ -125,90 +129,104 @@ function addItemToCart(glazing, qty, totalPrice) {
     cartItems.append(cartRow);
 }
 
-drawCartItems()
-updateCartTotal()
-updateCartBadge()
-drawSaveForLater()
+function drawView() {
+    // Clear cartItems
+    let cartItems = document.getElementsByClassName("cart-items")[0];
+    // console.log('cartItems.childNodes.length', cartItems.childNodes.length); 
+    // console.log('cartItems.childNodes', cartItems.childNodes);
+    while (cartItems.firstChild) {
+        cartItems.removeChild(cartItems.firstChild);
+    }
+    // console.log('cartItems.childNodes after remove', cartItems.childNodes);
+    let getSaveItems = document.getElementsByClassName("item-container-2")[0];
+    while (getSaveItems.firstChild) {
+        getSaveItems.removeChild(getSaveItems.firstChild);
+    }
+    // Draw all
+    let items = JSON.parse(localStorage.getItem("items"));
+    let saveItems = JSON.parse(localStorage.getItem("saveItems"));
+    // console.log('items', items);
+    drawCartItems(items)
+    updateCartTotal(items)
+    updateCartBadge(items)
+    drawSaveForLater(saveItems)
+}
 
-// delete items
-var removeCartItemButtons = document.getElementsByClassName("delete");
-var deleteItemIndex;
-for (let i = 0; i < removeCartItemButtons.length; i++){
-    let button = removeCartItemButtons[i];
-    button.addEventListener('click', function(event) {
-        let buttonClicked = event.target;
-        let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
-        deleteItemIndex = i;
-        let items = JSON.parse(localStorage.getItem("items"));
-        items.splice(deleteItemIndex, 1);
-        localStorage.setItem('items', JSON.stringify(items));
-        item.remove();
-        updateCartTotal()
-        updateCartBadge()
-    })
+function addEventListeners() {
+    var removeCartItemButtons = document.getElementsByClassName("delete");
+    var deleteItemIndex;
+    for (let i = 0; i < removeCartItemButtons.length; i++){
+        let button = removeCartItemButtons[i];
+        button.addEventListener('click', function(event) {
+            // let buttonClicked = event.target;
+            // let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
+            deleteItemIndex = i;
+            // console.log('delete', deleteItemIndex);
+            let items = JSON.parse(localStorage.getItem("items"));
+            items.splice(deleteItemIndex, 1);
+            localStorage.setItem('items', JSON.stringify(items));
+            drawView()
+        })
+    }
 }
 
 // edit items
-var editCartItemButtons = document.getElementsByClassName("edit");
-for (let i = 0; i < editCartItemButtons.length; i++){
-    let button = editCartItemButtons[i];
-    button.addEventListener('click', function(event) {
-        document.location.href = "detail.html";
-    })
+function addEditEventListeners(){
+    var editCartItemButtons = document.getElementsByClassName("edit");
+    for (let i = 0; i < editCartItemButtons.length; i++){
+        let button = editCartItemButtons[i];
+        button.addEventListener('click', function(event) {
+            document.location.href = "detail.html";
+        })
+    }
 }
 
 // Save for later
-var saveForLaterButtons = document.getElementsByClassName("save");
-var moveItemIndex;
-
-for (let i = 0; i < saveForLaterButtons.length; i++){
-    let button = saveForLaterButtons[i];
-    button.addEventListener('click', function(event) {
-        let buttonClicked = event.target;
-        let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
-        moveItemIndex = i;
-        let items = JSON.parse(localStorage.getItem("items"));
-        let saveItems = items[i];
-        addListInSave(saveItems);
-        items.splice(moveItemIndex, 1);
-        localStorage.setItem('items', JSON.stringify(items));
-        item.remove();
-        drawSaveForLater();
-        updateCartTotal();
-        updateCartBadge();
-    })
-}
-
-var saveForLaterArray = [];
-function addListInSave(saveItems) {
-    let item = saveItems; //list
-    console.log(item);
-    if (JSON.parse(localStorage.getItem("cartItems")) !== null){
-        saveForLaterArray = JSON.parse(localStorage.getItem("cartItems"));
+// addEventListeners to save for later
+function saveAddEventListeners() {
+    var saveCartItemButtons = document.getElementsByClassName("save");
+    var saveItems = []
+    var saveItemIndex;
+    for (let i = 0; i < saveCartItemButtons.length; i++){
+        let button = saveCartItemButtons[i];
+        button.addEventListener('click', function(event) {
+            saveItemIndex = i;
+            console.log('save', saveItemIndex);
+            let items = JSON.parse(localStorage.getItem("items"));
+            let saveItem = items[saveItemIndex];
+            if (JSON.parse(localStorage.getItem("saveItems")) !== null){
+                saveItems = JSON.parse(localStorage.getItem("saveItems"));
+            }
+            saveItems.push(saveItem);
+            localStorage.setItem("saveItems", JSON.stringify(saveItems));           
+            items.splice(saveItemIndex, 1);
+            localStorage.setItem('items', JSON.stringify(items));
+            drawView()
+        })
     }
-    saveForLaterArray.push(item);
-    localStorage.setItem("cartItems", JSON.stringify(saveForLaterArray));
-    console.log('list', JSON.parse(localStorage.getItem("cartItems")));
 }
 
 //draw items - Saved for later
-function drawSaveForLater() {
-    let items = JSON.parse(localStorage.getItem("cartItems"));
-    console.log('draw array: ', items);
+function drawSaveForLater(items) {
     let glazing;
     let qty;
     let totalPrice;
+    let image;
     if (items !== null){
         for (let i=0; i < items.length; i++) {
             glazing = items[i][0];
             qty = items[i][1];
             totalPrice = items[i][2];
+            image = items[i][3];
+            addItemToSaveForLater(glazing, qty, totalPrice, image);
         }
     }
-    addItemToSaveForLater(glazing, qty, totalPrice);
+    // Add onclick listener
+    saveAddEventListeners()
+    addEditEventListeners()
 }
 
-function addItemToSaveForLater(glazing, qty, totalPrice) {
+function addItemToSaveForLater(glazing, qty, totalPrice, image) {
     let cartRow = document.createElement('div');
     let cartItems = document.getElementsByClassName("item-container-2")[0];
     let cartRowContents = `
@@ -218,7 +236,7 @@ function addItemToSaveForLater(glazing, qty, totalPrice) {
                 <input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
             </div>
-            <img src="images/cart_original.png" alt="original">
+            <img src=${image} alt="original">
             <div class="text-container">
                 <div class="title-price">
                     <div class="product-title">Original</div>
@@ -256,23 +274,68 @@ function addItemToSaveForLater(glazing, qty, totalPrice) {
     cartItems.append(cartRow);
 }
 
-// delete items - Saved for later
-var removeSaveItemButtons = document.getElementsByClassName("delete-2");
-var deleteItemIndex2;
-for (let i = 0; i < removeSaveItemButtons.length; i++){
-    let button = removeSaveItemButtons[i];
+
+// // delete items - Saved for later
+// function removeSaveItems(){
+//     var removeSaveItemButtons = document.getElementsByClassName("delete-2");
+//     var deleteItemIndex2;
+//     for (let i = 0; i < removeSaveItemButtons.length; i++){
+//         let button = removeSaveItemButtons[i];
+//         // console.log('button', button);
+//         button.addEventListener('click', function(event) {
+//             let buttonClicked = event.target;
+//             // console.log('buttonClicked', buttonClicked);
+//             let item = buttonClicked.parentElement.parentElement.parentElement;
+//             // console.log('item', item);
+//             deleteItemIndex2 = i;
+//             let items = JSON.parse(localStorage.getItem("cartItems"));
+//             // console.log("clicked");
+//             items.splice(deleteItemIndex2, 1);
+//             localStorage.setItem("cartItems", JSON.stringify(items));
+//             // console.log("array", JSON.parse(localStorage.getItem("cartItems")));
+//             item.remove();
+//         })
+//     }
+// }
+
+//Move to cart
+var moveToCartButtons = document.getElementsByClassName("move");
+console.log('moveToCartbuttons', moveToCartButtons)
+var moveToCartIndex;
+
+for (let i = 0; i < moveToCartButtons.length; i++){
+    let button = moveToCartButtons[i];
     button.addEventListener('click', function(event) {
         let buttonClicked = event.target;
-        let item = buttonClicked.parentElement.parentElement.parentElement;
-        deleteItemIndex2 = i;
+        console.log('clicked')
+        let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
+        console.log('item', item);
+        moveToCartIndex = i;
+        console.log('moveToCartIndex', moveToCartIndex)
         let items = JSON.parse(localStorage.getItem("cartItems"));
-        console.log("clicked");
-        items.splice(deleteItemIndex2, 1);
-        localStorage.setItem("cartItems", JSON.stringify(items));
-        console.log("array", JSON.parse(localStorage.getItem("cartItems")));
+        let saveItems = items[i];
+        console.log('saveItems', saveItems);
+        addListInCart(saveItems);
+        items.splice(moveToCartIndex, 1);
+        localStorage.setItem('cartItems', JSON.stringify(items));
         item.remove();
+        drawSaveForLater();
     })
 }
 
-//Move to cart
+function addListInCart(saveItems) {
+    let item = saveItems; //list
+    console.log('item', item);
+    let cartArray = []
+    if (JSON.parse(localStorage.getItem("items")) !== null){
+        cartArray = JSON.parse(localStorage.getItem("items"));
+    }
+    cartArray.push(item);
+    localStorage.setItem("items", JSON.stringify(cartArray));
+    console.log('list', JSON.parse(localStorage.getItem("items")));
+    updateCartTotal();
+    updateCartBadge();
+    drawSaveForLater();
+}
 
+drawView()

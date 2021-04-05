@@ -1198,3 +1198,7 @@ INPUT[type=checkbox]:checked
     background-color: var(--gold);
     background: var(--gold) url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 2px 2px no-repeat;
 }
+
+.text-btn {
+  cursor: pointer;
+}

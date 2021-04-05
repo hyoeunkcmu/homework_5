@@ -158,10 +158,7 @@ function addEventListeners() {
     for (let i = 0; i < removeCartItemButtons.length; i++){
         let button = removeCartItemButtons[i];
         button.addEventListener('click', function(event) {
-            // let buttonClicked = event.target;
-            // let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
             deleteItemIndex = i;
-            // console.log('delete', deleteItemIndex);
             let items = JSON.parse(localStorage.getItem("items"));
             items.splice(deleteItemIndex, 1);
             localStorage.setItem('items', JSON.stringify(items));
@@ -224,6 +221,8 @@ function drawSaveForLater(items) {
     // Add onclick listener
     saveAddEventListeners()
     addEditEventListeners()
+    addDeleteEventListenersToSave()
+    moveAddEventListeners()
 }
 
 function addItemToSaveForLater(glazing, qty, totalPrice, image) {
@@ -274,68 +273,41 @@ function addItemToSaveForLater(glazing, qty, totalPrice, image) {
     cartItems.append(cartRow);
 }
 
-
-// // delete items - Saved for later
-// function removeSaveItems(){
-//     var removeSaveItemButtons = document.getElementsByClassName("delete-2");
-//     var deleteItemIndex2;
-//     for (let i = 0; i < removeSaveItemButtons.length; i++){
-//         let button = removeSaveItemButtons[i];
-//         // console.log('button', button);
-//         button.addEventListener('click', function(event) {
-//             let buttonClicked = event.target;
-//             // console.log('buttonClicked', buttonClicked);
-//             let item = buttonClicked.parentElement.parentElement.parentElement;
-//             // console.log('item', item);
-//             deleteItemIndex2 = i;
-//             let items = JSON.parse(localStorage.getItem("cartItems"));
-//             // console.log("clicked");
-//             items.splice(deleteItemIndex2, 1);
-//             localStorage.setItem("cartItems", JSON.stringify(items));
-//             // console.log("array", JSON.parse(localStorage.getItem("cartItems")));
-//             item.remove();
-//         })
-//     }
-// }
-
-//Move to cart
-var moveToCartButtons = document.getElementsByClassName("move");
-console.log('moveToCartbuttons', moveToCartButtons)
-var moveToCartIndex;
-
-for (let i = 0; i < moveToCartButtons.length; i++){
-    let button = moveToCartButtons[i];
-    button.addEventListener('click', function(event) {
-        let buttonClicked = event.target;
-        console.log('clicked')
-        let item = buttonClicked.parentElement.parentElement.parentElement.parentElement;
-        console.log('item', item);
-        moveToCartIndex = i;
-        console.log('moveToCartIndex', moveToCartIndex)
-        let items = JSON.parse(localStorage.getItem("cartItems"));
-        let saveItems = items[i];
-        console.log('saveItems', saveItems);
-        addListInCart(saveItems);
-        items.splice(moveToCartIndex, 1);
-        localStorage.setItem('cartItems', JSON.stringify(items));
-        item.remove();
-        drawSaveForLater();
-    })
+function addDeleteEventListenersToSave(){
+    let removeSaveItemButtons = document.getElementsByClassName("delete-2");
+    let deleteItemIndex;
+    for (let i = 0; i < removeSaveItemButtons.length; i++){
+        let button = removeSaveItemButtons[i];
+        button.addEventListener('click', function(event) {
+            deleteItemIndex = i;
+            let saveItems = JSON.parse(localStorage.getItem("saveItems"));
+            saveItems.splice(deleteItemIndex, 1);
+            localStorage.setItem("saveItems", JSON.stringify(saveItems));
+            drawView();
+        })
+    }
 }
 
-function addListInCart(saveItems) {
-    let item = saveItems; //list
-    console.log('item', item);
-    let cartArray = []
-    if (JSON.parse(localStorage.getItem("items")) !== null){
-        cartArray = JSON.parse(localStorage.getItem("items"));
+//Move to cart
+function moveAddEventListeners() {
+    var moveToCartButtons = document.getElementsByClassName("move");
+    var moveItemIndex;
+    for (let i = 0; i < moveToCartButtons.length; i++){
+        let button = moveToCartButtons[i];
+        button.addEventListener('click', function(event) {
+            moveItemIndex = i;
+            let saveItems = JSON.parse(localStorage.getItem("saveItems"));
+            let moveItem = saveItems[moveItemIndex];
+            if (JSON.parse(localStorage.getItem("items")) !== null){
+                cartItems = JSON.parse(localStorage.getItem("items"));
+            }
+            cartItems.push(moveItem);
+            localStorage.setItem("items", JSON.stringify(cartItems));           
+            saveItems.splice(moveItemIndex, 1);
+            localStorage.setItem('saveItems', JSON.stringify(saveItems));
+            drawView()
+        })
     }
-    cartArray.push(item);
-    localStorage.setItem("items", JSON.stringify(cartArray));
-    console.log('list', JSON.parse(localStorage.getItem("items")));
-    updateCartTotal();
-    updateCartBadge();
-    drawSaveForLater();
 }
 
 drawView()

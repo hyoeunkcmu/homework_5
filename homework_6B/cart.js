@@ -46,7 +46,7 @@ function exitDropdownMenu() {
         }
     }
 }
-
+//Save for later
 function addDropdownEventListenersToSave() {
     let dropDownButtons = document.getElementsByClassName("dropbtn2");
     var itemIndex;
@@ -76,7 +76,7 @@ function addDropdownEventListenersToSave() {
         })
     }
 }
-
+//Save for later
 function exitDropdownMenu2() {
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn2')) {

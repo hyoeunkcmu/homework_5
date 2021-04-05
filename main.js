@@ -52,12 +52,16 @@ prevBtn.addEventListener('click', ()=>{
 
 // activate shoping cart badge
 
-var badgeToggle = localStorage.getItem("mycartBadge");
-if (badgeToggle === "1"){
-    var x = document.getElementById("badge");
-    x.style.visibility = "visible";
+if (JSON.parse(localStorage.getItem("items")) !== null){
+    var totalNum = JSON.parse(localStorage.getItem("items")).length;
 }
 
-localStorage.setItem("default", '1');
-var badgeValue = localStorage.getItem("default");
-document.getElementById("badge").innerHTML = badgeValue;
+if (totalNum > 0) {
+    let x = document.getElementById("badge");
+    x.style.visibility = "visible";
+}
+else {
+    let x = document.getElementById("badge");
+    x.style.visibility = "hidden";
+}
+document.getElementById("badge").innerHTML = totalNum;

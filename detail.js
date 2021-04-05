@@ -104,10 +104,10 @@ function qtyBtnToggle(item) {
 
 // parse price text from option text
 function getQtyPrice(item) {
-    var qtyText = item.innerHTML;
-    var dollarStrIndex = qtyText.indexOf("$");
-    var lastStrIndex = qtyText.length;  
-    var priceText = qtyText.slice(dollarStrIndex+1, lastStrIndex);
+    let qtyText = item.innerHTML;
+    let dollarStrIndex = qtyText.indexOf("$");
+    let lastStrIndex = qtyText.length;  
+    let priceText = qtyText.slice(dollarStrIndex+1, lastStrIndex);
     return parseInt(priceText);
 }
 
@@ -116,11 +116,55 @@ cartBtn.addEventListener("click", () =>{
     cartAlert();
 });
 
+// localStorage for the cart item
+
+var cartItems = [];
+
+function addItemInCart() {
+    let cartProductImages = ["images/cart_original.png", "images/cart_sugar.png", "images/cart_vanila.png", "images/cart_choco.png"];
+    let defaultTotalQty = 1;
+    let totalQty = defaultTotalQty;
+    let glazing;
+    let qty;
+    let totalPrice;
+    let finalPrice;
+    let image;
+    for (let i=0; i < glazingArray.length; i++){
+        if(glazingArray[i].id === "activated"){
+            glazing = glazingArray[i].innerHTML;
+            image = cartProductImages[i];
+        }
+        if(glazingArray[i].innerHTML === "None"){
+            image = cartProductImages[0];
+        }
+    }
+    for (let i=0; i < qtyArray.length; i++){
+        if (qtyArray[i].id === "qty_activated"){
+            qty = qtyArray[i].innerHTML;
+            qty = getQty(qty);
+        }
+    }
+    totalPrice = getQtyPrice(cartBtn);
+    finalPrice = totalPrice * totalQty;
+    var item = [glazing, qty, totalPrice, image, totalQty, finalPrice];
+    if (JSON.parse(localStorage.getItem("items")) !== null){
+        cartItems = JSON.parse(localStorage.getItem("items"));
+    }
+    cartItems.push(item);
+    localStorage.setItem("items", JSON.stringify(cartItems));
+}
+
+function getQty(item) {
+    let pStrIndex = item.indexOf("P");
+    let qtyText = item.slice(0, pStrIndex);
+    return parseInt(qtyText);
+}
+
 // alert if user click add to cart without qty
 function cartAlert() {
     for (let i=0; i < qtyArray.length; i++){
         if (qtyArray[i].id === "qty_activated"){
-            activateBadge();
+            addItemInCart();
             document.location.href = "cart.html";
             return true;
         }
@@ -129,21 +173,19 @@ function cartAlert() {
 }
 
 // activate shoping cart badge
-function activateBadge() {
-    localStorage.setItem("mycartBadge", '1');
-    var y = document.getElementById("badge").innerHTML;
-    y = parseInt(y) + 1
-    localStorage.setItem("default", y);
+if (JSON.parse(localStorage.getItem("items")) !== null){
+    var totalNum = JSON.parse(localStorage.getItem("items")).length;
 }
 
-var badgeValue = localStorage.getItem("default");
-document.getElementById("badge").innerHTML = badgeValue;
-
-var badgeToggle = localStorage.getItem("mycartBadge");
-if (badgeToggle === "1"){
-    var x = document.getElementById("badge");
+if (totalNum > 0) {
+    let x = document.getElementById("badge");
     x.style.visibility = "visible";
 }
+else {
+    let x = document.getElementById("badge");
+    x.style.visibility = "hidden";
+}
+document.getElementById("badge").innerHTML = totalNum;
 
 // detail-page toggle on off information
 

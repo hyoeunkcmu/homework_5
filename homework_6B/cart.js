@@ -1,19 +1,93 @@
 // Qty dropdown menu 
 // ref:https://www.w3schools.com/howto/howto_js_dropdown.asp
 
-function dropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function addDropdownEventListeners() {
+    var dropDownButtons = document.getElementsByClassName("dropbtn");
+    var itemIndex;
+    for (let i = 0; i < dropDownButtons.length; i++){
+        let button = dropDownButtons[i];
+        button.addEventListener('click', function(event){
+            itemIndex = i;
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var eventDropdownContents = dropdowns[itemIndex];
+            eventDropdownContents.classList.toggle("show");
+            exitDropdownMenu()
+        })
+    }
+    var contentsButtons = document.getElementsByClassName("drQty");
+    for (let i = 0; i < contentsButtons.length; i++){
+        let button = contentsButtons[i];
+        button.addEventListener('click', function(event){
+            let text = event.target.innerHTML;
+            let intText = text[text.length - 1];
+            let items = JSON.parse(localStorage.getItem("items"));
+            let price = items[itemIndex][2];
+            items[itemIndex][4] = intText; //multiplier
+            let finalPrice = price * intText;
+            items[itemIndex][5] = finalPrice;
+            localStorage.setItem('items', JSON.stringify(items));
+            drawView()
+        })
+    }
 }
 
-window.onclick = function(event){
-    if(!event.target.matches('.dropbtn')) {
-        let dropdowns = document.getElementsByClassName("dropdown-content");
-        let i;
-        for (i=0; i < dropdowns.length; i++) {
-            let openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }        
+// Close the dropdown menu if the user clicks outside of it
+function exitDropdownMenu() {
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+}
+
+function addDropdownEventListenersToSave() {
+    let dropDownButtons = document.getElementsByClassName("dropbtn2");
+    var itemIndex;
+    for (let i = 0; i < dropDownButtons.length; i++){
+        itemIndex = i;
+        let button = dropDownButtons[i];
+        button.addEventListener('click', function(event){
+            let dropdowns = document.getElementsByClassName("dropdown-content2");
+            let eventDropdownContents = dropdowns[i];
+            eventDropdownContents.classList.toggle("show");
+            exitDropdownMenu2();
+        })
+    }
+    var contentsButtons = document.getElementsByClassName("drQty2");
+    for (let i = 0; i < contentsButtons.length; i++){
+        let button = contentsButtons[i];
+        button.addEventListener('click', function(event){
+            let text = event.target.innerHTML;
+            let intText = text[text.length - 1];
+            let items = JSON.parse(localStorage.getItem("saveItems"));
+            let price = items[itemIndex][2];
+            items[itemIndex][4] = intText; //multiplier
+            let finalPrice = price * intText;
+            items[itemIndex][5] = finalPrice;
+            localStorage.setItem("saveItems", JSON.stringify(items));
+            drawView()
+        })
+    }
+}
+
+function exitDropdownMenu2() {
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn2')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content2");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                }
+            }
         }
     }
 }
@@ -45,18 +119,17 @@ function updateCartBadge(items){
 }
 
 function updateCartTotal(items) {
-//items = [glazing, qty, totalPrice];
-    let totalPrice = 0;
+    let finalPrice = 0;
     if (items !== null){
         let items = JSON.parse(localStorage.getItem("items"));
         for (let i=0; i < items.length; i++) {
-            totalPrice += parseInt(items[i][2]);
+            finalPrice += parseInt(items[i][5]);
         }
     }
     let totalText = document.getElementsByClassName("subtotal");
     for (let i=0; i < totalText.length; i++) {
         let text = totalText[i];
-        text.innerHTML = "Subtotal: $" + totalPrice;
+        text.innerHTML = "Subtotal: $" + finalPrice;
     }
 }
 
@@ -67,21 +140,26 @@ function drawCartItems(items) {
     let qty;
     let totalPrice;
     let image;
+    let totalQty;
+    let finalPrice;
     if (items !== null) {
         for (let i=0; i < items.length; i++) {
             glazing = items[i][0];
             qty = items[i][1];
             totalPrice = items[i][2];
             image = items[i][3];
-            addItemToCart(glazing, qty, totalPrice, image);
+            totalQty = items[i][4];
+            finalPrice = items[i][5];
+            addItemToCart(glazing, qty, totalPrice, image, totalQty, finalPrice);
         }
     }
     // Add onclick listener
     addEventListeners()
     addEditEventListeners()
+    addDropdownEventListeners()
 }
 
-function addItemToCart(glazing, qty, totalPrice, image) {
+function addItemToCart(glazing, qty, totalPrice, image, totalQty, finalPrice) {
     let cartRow = document.createElement('div');
     let cartItems = document.getElementsByClassName("cart-items")[0];
     let cartRowContents = `
@@ -96,14 +174,15 @@ function addItemToCart(glazing, qty, totalPrice, image) {
                 <div class="title-price">
                     <div class="product-title">Original</div>
                     <div class="dropdown">
-                        <button onclick="dropdown()" class="dropbtn">Qty: 1 <i class="fas fa-sort-down"></i></button>
-                        <div id="myDropdown" class='dropdown-content'>
-                            <div>Qty: 2</div>
-                            <div>Qty: 3</div>
-                            <div>Qty: 4</div>
+                        <button class="dropbtn">Qty: ${totalQty} <i class="fas fa-sort-down"></i></button>
+                        <div class='dropdown-content'>
+                            <div class='drQty'>Qty: 1</div>
+                            <div class='drQty'>Qty: 2</div>
+                            <div class='drQty'>Qty: 3</div>
+                            <div class='drQty'>Qty: 4</div>
                         </div>
                     </div>                
-                    <div class="product-title">$${totalPrice}</div>
+                    <div class="product-title">$${finalPrice}</div>
                 </div>
                 <div class="glazing-option">
                     <b>Glazing:</b> ${glazing}
@@ -209,13 +288,17 @@ function drawSaveForLater(items) {
     let qty;
     let totalPrice;
     let image;
+    let totalQty;
+    let finalPrice;
     if (items !== null){
         for (let i=0; i < items.length; i++) {
             glazing = items[i][0];
             qty = items[i][1];
             totalPrice = items[i][2];
             image = items[i][3];
-            addItemToSaveForLater(glazing, qty, totalPrice, image);
+            totalQty = items[i][4];
+            finalPrice = items[i][5];
+            addItemToSaveForLater(glazing, qty, totalPrice, image, totalQty, finalPrice);
         }
     }
     // Add onclick listener
@@ -223,9 +306,10 @@ function drawSaveForLater(items) {
     addEditEventListeners()
     addDeleteEventListenersToSave()
     moveAddEventListeners()
+    addDropdownEventListenersToSave()
 }
 
-function addItemToSaveForLater(glazing, qty, totalPrice, image) {
+function addItemToSaveForLater(glazing, qty, totalPrice, image, totalQty, finalPrice) {
     let cartRow = document.createElement('div');
     let cartItems = document.getElementsByClassName("item-container-2")[0];
     let cartRowContents = `
@@ -240,14 +324,15 @@ function addItemToSaveForLater(glazing, qty, totalPrice, image) {
                 <div class="title-price">
                     <div class="product-title">Original</div>
                     <div class="dropdown">
-                        <button onclick="dropdown()" class="dropbtn">Qty: 1 <i class="fas fa-sort-down"></i></button>
-                        <div id="myDropdown" class='dropdown-content'>
-                            <div>Qty: 2</div>
-                            <div>Qty: 3</div>
-                            <div>Qty: 4</div>
+                        <button class="dropbtn2">Qty: ${totalQty} <i class="fas fa-sort-down"></i></button>
+                        <div class='dropdown-content2'>
+                            <div class='drQty2'>Qty: 1</div>
+                            <div class='drQty2'>Qty: 2</div>
+                            <div class='drQty2'>Qty: 3</div>
+                            <div class='drQty2'>Qty: 4</div>
                         </div>
                     </div>                
-                    <div class="product-title">$${totalPrice}</div>
+                    <div class="product-title">$${finalPrice}</div>
                 </div>
                 <div class="glazing-option">
                     <b>Glazing:</b> ${glazing}

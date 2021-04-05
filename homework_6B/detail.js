@@ -122,9 +122,12 @@ var cartItems = [];
 
 function addItemInCart() {
     let cartProductImages = ["images/cart_original.png", "images/cart_sugar.png", "images/cart_vanila.png", "images/cart_choco.png"];
+    let defaultTotalQty = 1;
+    let totalQty = defaultTotalQty;
     let glazing;
     let qty;
     let totalPrice;
+    let finalPrice;
     let image;
     for (let i=0; i < glazingArray.length; i++){
         if(glazingArray[i].id === "activated"){
@@ -142,7 +145,8 @@ function addItemInCart() {
         }
     }
     totalPrice = getQtyPrice(cartBtn);
-    var item = [glazing, qty, totalPrice, image];
+    finalPrice = totalPrice * totalQty;
+    var item = [glazing, qty, totalPrice, image, totalQty, finalPrice];
     if (JSON.parse(localStorage.getItem("items")) !== null){
         cartItems = JSON.parse(localStorage.getItem("items"));
     }

@@ -5,9 +5,9 @@
 - Users can add products to the cart page with their actual product selections.
 - Shopping cart notification badge is dynamically updated across the whole pages.
 - Users can delete the products.
-- Users can update qty of the product and subtotal is dynamically updated.
-  *This store sells cinnamon rolls as a package box (1/3/6/12PK), and this is considered as one product.
-   Users can update the qty of this package as multiple packages on the cart page. (3PK * 2 Qty)
+- Users can update qty of the product, and subtotal is dynamically updated.
+  (This store sells cinnamon rolls as a package box (1/3/6/12PK), and this is considered as one product.
+   Users can update the qty of this package as multiple packages on the cart page. (3PK * 2 Qty))
 
 # Bonus
 

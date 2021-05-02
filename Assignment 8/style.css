@@ -4,7 +4,7 @@ body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 body {
@@ -25,6 +25,7 @@ body {
 	font-family: 'Amatic SC', cursive;
 	font-size: 11vw;
 	color: #5AA593;
+	padding-bottom: 2vw;
 }
 
 .layer p {
@@ -35,44 +36,51 @@ body {
 	font-weight: 100;
 }
 
+#subtext {
+	font-family: 'Amatic SC', cursive;
+	font-size: 6vw;
+	font-weight: 800;
+	color: #5AA593;
+	margin-bottom: 10vw;
+}
+
 /* Styles for layer-1 */
 
+.layer-1 {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5vw;
+}
+
 .my-btn {
-	font-size: 2vw;
+	font-size: 1.5vw;
 	color: rgba(255, 255, 255, 0.897);
 	font-family: 'Oswald', sans-serif;
-	padding: 1vw 5vw;
-	margin: 2vw;
+	padding: 1vw;
 }
 
 .my-row {
 	border: 1px solid red;
 }
 
-#row-cloud {
-	height: 14vw;
-}
-
 .layer.one {
 	background: #ACF0F4;
 }
 
+
 /* Styles for layer-2 */
 
-.layer.two {
+.layer.two,
+.layer.three {
 	background: #FFF9BE;
 }
 
 /* Styles for layer-3 */
-.layer.three {
+/* .layer.three {
 	background: #FCDCDF;
-}
+} */
 
-
-
-
-
-
+/* layer visibility */
 .layers {
 	width: 100%;
 	height: 100%;
@@ -124,10 +132,16 @@ body {
 }
 
 @media (orientation: portrait) {
-	.layer.one {
-		background: #95dc84;
+	.layers .layer.show {
+		visibility: hidden;
+	}
+	
+	.layers .layer.warn {
+		visibility: visible;
+		background: #ACF0F4;
 	}
 }
+
 
 /* 
 .layers.capable {

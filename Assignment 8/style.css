@@ -75,10 +75,75 @@ body {
 	background: #FFF9BE;
 }
 
-/* Styles for layer-3 */
-/* .layer.three {
-	background: #FCDCDF;
+.letter {
+	margin: 0 auto;
+}
+
+/* #Polygon-1{
+	transform: rotateX(70deg);
+	transform-origin: 100% 100% 1;
+	transform-style: preserve-3d;
 } */
+
+.layer.four,
+.layer.five {
+	background: #FCDCDF;
+}
+
+/* Styles for layer-5 */
+.col.bg {
+	background-color:#FFF9BE;
+	margin-top: 2vw;
+	margin-left: 1vw;
+	margin-right: 1vw;
+}
+
+.layer.six {
+	background: #FFF9BE;
+	margin: 0 auto;
+}
+
+.layer.seven {
+	background: #FFDFD3;
+	margin: 0 auto;
+}
+
+#car {
+	position: fixed;
+	bottom: 5%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+	z-index: 3;
+}
+
+#road {
+	position: fixed;
+	bottom: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+	z-index: 1;
+}
+
+#road-rect {
+	position: fixed;
+	bottom: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+	z-index: 2;
+}
+
+#pink-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+
 
 /* layer visibility */
 .layers {

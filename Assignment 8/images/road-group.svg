@@ -1,0 +1,22 @@
+<svg width="1440" height="624" viewBox="0 0 1440 624" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="road-group">
+<g id="tree">
+<rect id="Rectangle 35" x="1258" y="404" width="18" height="116" fill="#A06F42"/>
+<g id="Group 9">
+<path id="Polygon 4" d="M1266.67 0L1372.03 438.75H1161.3L1266.67 0Z" fill="#207B4F"/>
+<path id="Polygon 5" d="M1266.67 0L1372.03 438.75H1266.67V0Z" fill="#3AA349"/>
+</g>
+</g>
+<g id="sm-tree">
+<rect id="Rectangle 35_2" x="141.302" y="443.644" width="11.8356" height="76.274" fill="#A06F42"/>
+<g id="Group 9_2">
+<path id="Polygon 4_2" d="M147 178L216.282 466.493H77.718L147 178Z" fill="#207B4F"/>
+<path id="Polygon 5_2" d="M147 178L216.282 466.493H147V178Z" fill="#3AA349"/>
+</g>
+</g>
+<g id="road">
+<rect id="Rectangle 34" y="520" width="1440" height="104" fill="#4D4834"/>
+<line id="Line 43" y1="569.5" x2="1440" y2="569.5" stroke="#ECECEC" stroke-width="5" stroke-dasharray="15 15"/>
+</g>
+</g>
+</svg>

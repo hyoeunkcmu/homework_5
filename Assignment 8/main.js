@@ -50,6 +50,39 @@ roadTl.to("#road", {duration: 2, x: -1400, ease: "none"})
 const boardTl = gsap.timeline({repeat:-1, repeatDelay: 0.5});
 boardTl.from("#seattle", {duration:0.2, autoAlpha:0, ease: "none"});
 
+// layer ten animation
+// gsap.set("#plane-cloud1", {y:-30})
+// const planeCloud1 = gsap.timeline({repeat:-1, repeatDelay:1});
+// planeCloud1.to("#plane-cloud1", {duration:1, y:-20})
+// planeCloud1.to("#plane-cloud1", {duration:1, y:-30})
+
+// gsap.set("#plane-cloud2", {y:10})
+// const planeCloud2 = gsap.timeline({repeat:-1, repeatDelay:1});
+// planeCloud1.to("#plane-cloud2", {duration:1, y:-10})
+// planeCloud1.to("#plane-cloud2", {duration:1, y:10})
+
+const planeTl = gsap.timeline({repeat:-1, repeatDelay: 0.5});
+planeTl.to("#plane", {duration:1, x: 30})
+planeTl.to("#plane", {duration:1, x: 0})
+
+const planeMoveTl = gsap.timeline();
+planeMoveTl.to("#plane", {duration:1, x: 2000})
+planeMoveTl.pause();
+
+document.getElementById("plane").onclick = () => planeFunction();
+
+function planeFunction() {
+    planeTl.pause();
+    planeMoveTl.play();
+}
+
+// gsap.registerPlugin(MotionPathPlugin);
+// gsap.to("#plane-sm", {
+//     motionPath: "#path"
+// });
+
+
+
 
 // tl.set(bounce_obj, {y: 0})
 // .to(bounce_obj, duration / 4, {y:+20, ease:Power2.easeOut}, "bounceme")

@@ -108,6 +108,27 @@ body {
 	margin: 0 auto;
 }
 
+.layer.eight {
+	background: #D7ECD9;
+	margin: 0 auto;
+}
+
+.layer.ten,
+.layer.eleven {
+	background: #ACF0F4;
+	margin: 0 auto;
+}
+
+.layer.twelve,
+.layer.thirteen{
+	background: #D7ECD9;
+	margin: 0 auto;
+}
+
+.layer.fourteen{
+	background: #FCDCDF;
+}
+
 #car {
 	position: fixed;
 	bottom: 5%;
@@ -143,7 +164,119 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* layer ten */
+#plane {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
 
+#plane-cloud1 {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#plane-cloud2 {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#city {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	width: 100vw;
+}
+
+#plane-sm {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#path{
+    position: absolute;
+    top: 55%;
+    left: 60%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+#open-door {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+#ppl{
+	position: absolute;
+    top: 55%;
+    left: 35%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	z-index: 3;
+}
+
+#tag {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	width: 100vw;
+}
+
+#ending{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	width: 100vw;
+	font-family: 'Amatic SC', cursive;
+	font-size: 8vw;
+	color: #5AA593;
+}
+
+#jh-1{
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#jh-2{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#jh-3{
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
 
 /* layer visibility */
 .layers {

@@ -68,10 +68,8 @@
 <rect id="Rectangle 20" x="7" y="401" width="502" height="346.911" rx="20" fill="#FBCB41"/>
 <rect id="Rectangle 14_9" x="20" y="65" width="476" height="329" rx="20" fill="#855327"/>
 <rect id="Rectangle 26" x="20" y="401" width="476" height="329" rx="20" fill="#855327"/>
-<rect id="topLeft" x="262" y="72" width="224" height="315" rx="20" fill="#A06F42"/>
-<rect id="bottomLeft" x="262" y="409" width="224" height="315" rx="20" fill="#A06F42"/>
-<rect id="topRight" x="30" y="72" width="228" height="315" rx="20" fill="#A06F42"/>
-<rect id="bottomRight" x="30" y="409" width="228" height="315" rx="20" fill="#A06F42"/>
+<rect id="topLeft" x="30" y="72" width="456" height="315" rx="20" fill="#A06F42"/>
+<rect id="bottomLeft" x="30" y="409" width="456" height="315" rx="20" fill="#A06F42"/>
 <path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M206 0C200.477 0 196 4.47714 196 9.99999V46.8298H207.872V20.5532C207.872 15.0304 212.35 10.5532 217.872 10.5532H298.128C303.651 10.5532 308.128 15.0304 308.128 20.5532V46.8298H320V10C320 4.47715 315.523 0 310 0H206Z" fill="#A76D36"/>
 <rect id="Rectangle 15" x="186" y="45" width="33" height="3" rx="1.5" fill="#858585"/>
 <rect id="Rectangle 19" x="297" y="45" width="33" height="3" rx="1.5" fill="#858585"/>

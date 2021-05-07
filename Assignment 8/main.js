@@ -154,9 +154,11 @@ function layer4Transition() {
 }
 
 // layer six animation
-gsap.set("#road", {x:window.innerWidth})
+// gsap.set("#road", {x:0})
 const roadTl = gsap.timeline({repeat:-1});
-roadTl.to("#road", {duration: 3.5, x: -window.innerWidth, ease: "none"})
+roadTl.set("#road", {x: window.innerWidth})
+roadTl.to("#road", {duration: 2, x: -window.innerWidth, ease: "none"})
+
 const carTl = gsap.timeline();
 carTl.to("#car-container", {duration: 0.6, y:30, ease:"circ.in", repeat:-1, yoyo:true})
 gsap.set("#circle-1", {scale: 0.8, x: -5, y: 7})
@@ -305,23 +307,41 @@ function layer10Transition() {
 }
 
 //layer twelve animation
+function doorAnimation(){
+    gsap.set(".twelve", {autoAlpha:0})
+    gsap.set(".hello", {autoAlpha:0})
+    gsap.set(".next-door", {autoAlpha:0})
+    const doorTl = gsap.timeline();
+    addShow(12)
+    deleteShow(11)
+    doorTl.to("#ppl", {
+        duration: 3, 
+        scale:1.2,
+        // repeatDelay: 3,
+        yoyo: false,
+        ease: "power1.inOut",
+        motionPath:{
+          path: "#moving",
+          align: "#moving",
+          alignOrigin: [0.5, 0.5]
+        }
+    });
+    doorTl.to(".hello", {duration:1, autoAlpha:1})
+    doorTl.to(".next-door", {duration:1, autoAlpha:1})
+}
 
+document.querySelector("#door").onclick = () => doorAnimation();
 
-// layer thirteen animation
-const pplTl = gsap.timeline();
-pplTl.to("#ppl", {
-    duration: 3, 
-    scale:1.2,
-    repeatDelay: 3,
-    yoyo: false,
-    ease: "power1.inOut",
-    motionPath:{
-      path: "#moving",
-      align: "#moving",
-      alignOrigin: [0.5, 0.5]
-    }
-});
-pplTl.delay(2);
+//layer thirteen transition
+document.querySelector(".next-door").onclick = () => doorTransition();
+
+function doorTransition() {
+    gsap.set(".fourteen", {autoAlpha:0})
+    gsap.to(".thirteen", {duration:0.5, autoAlpha:0})
+    addShow(13)
+    deleteShow(12)
+    gsap.to(".fourteen", {duration:0.5, autoAlpha:1})
+}
 
 // layer fourteen animation
 gsap.set("#jh-1", {scale:0})
@@ -334,3 +354,4 @@ lastTl.to("#jh-3", {duration:0.6, scale:1}, "-=0.3");
 lastTl.to("#jh-1", {duration:1, rotation:-10, repeat:-1, yoyo: true});
 lastTl.to("#jh-2", {duration:1, rotation:10, repeat:-1, yoyo: true}, "-=1");
 lastTl.to("#jh-3", {duration:1, rotation:-10, repeat:-1, yoyo: true}, "-=2");
+

@@ -1,0 +1,71 @@
+<svg width="392" height="290" viewBox="0 0 392 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="car">
+<path id="Rectangle 38" d="M30 209C30 197.954 38.9543 189 50 189H392V220C392 231.046 383.046 240 372 240H50C38.9543 240 30 231.046 30 220V209Z" fill="#222222"/>
+<path id="Vector 3" d="M30 216.5V79C30 73.4772 34.4772 69 40 69H235.207C239.789 69 243.784 72.114 244.904 76.5572L257.868 128.022C258.856 131.943 262.108 134.884 266.109 135.473L383.456 152.743C388.364 153.465 392 157.676 392 162.636V189.686C392 199.117 380.141 203.305 374.218 195.966L372.002 193.22C370.104 190.867 367.243 189.5 364.22 189.5H319.764C317.04 189.5 314.434 190.611 312.548 192.577L282.952 223.423C281.066 225.389 278.46 226.5 275.736 226.5H165.058C161.602 226.5 158.39 224.715 156.566 221.779L139.434 194.221C137.61 191.285 134.398 189.5 130.942 189.5H85.5271C82.3643 189.5 79.3879 190.996 77.5012 193.535L55.9988 222.465C54.1121 225.004 51.1357 226.5 47.9729 226.5H40C34.4772 226.5 30 222.023 30 216.5Z" fill="#1F64AC"/>
+<rect id="Rectangle 36" x="377" y="160" width="15" height="23" rx="5" fill="#F8A33F"/>
+<rect id="Rectangle 37" y="97" width="30" height="102" rx="10" fill="#2C2C2C"/>
+<circle id="Ellipse 15" cx="107.5" cy="244.5" r="45.5" fill="#2C2C2C"/>
+<circle id="Ellipse 16" cx="107.5" cy="244.5" r="26.5" fill="#ECECEC"/>
+<g id="wheel-rear">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="81" y="218" width="53" height="53">
+<circle id="Ellipse 18" cx="107.5" cy="244.5" r="26.5" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<circle id="Ellipse 17" cx="97.5" cy="226.5" r="35.5" fill="white"/>
+</g>
+</g>
+<circle id="Ellipse 17_2" cx="339.5" cy="244.5" r="45.5" fill="#2C2C2C"/>
+<circle id="Ellipse 18_2" cx="339.5" cy="244.5" r="26.5" fill="#ECECEC"/>
+<g id="wheel-front">
+<mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="313" y="218" width="53" height="53">
+<circle id="Ellipse 18_3" cx="339.5" cy="244.5" r="26.5" fill="white"/>
+</mask>
+<g mask="url(#mask1)">
+<circle id="Ellipse 17_3" cx="329.5" cy="226.5" r="35.5" fill="white"/>
+</g>
+</g>
+<g id="Group 12">
+<rect id="Rectangle 39" x="30" y="81" width="26" height="55" fill="#EBF8F8"/>
+<g id="Mask Group">
+<mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="30" y="81" width="26" height="55">
+<rect id="Rectangle 40" x="30" y="81" width="26" height="55" fill="#B3E7E7"/>
+</mask>
+<g mask="url(#mask2)">
+<rect id="Rectangle 41" x="30" y="108.018" width="26" height="55" fill="#B3E7E7"/>
+</g>
+</g>
+</g>
+<g id="Group 13">
+<rect id="Rectangle 39_2" x="68" y="81" width="106" height="55" fill="#EBF8F8"/>
+<g id="Mask Group_2">
+<mask id="mask3" mask-type="alpha" maskUnits="userSpaceOnUse" x="68" y="81" width="106" height="55">
+<rect id="Rectangle 40_2" x="68" y="81" width="106" height="55" fill="#B3E7E7"/>
+</mask>
+<g mask="url(#mask3)">
+<rect id="Rectangle 41_2" x="68" y="108.018" width="106" height="55" fill="#B3E7E7"/>
+</g>
+</g>
+</g>
+<g id="Group 14">
+<path id="Rectangle 39_3" d="M186 81H239.5L253.5 136H186V81Z" fill="#EBF8F8"/>
+<g id="Mask Group_3">
+<mask id="mask4" mask-type="alpha" maskUnits="userSpaceOnUse" x="186" y="83" width="70" height="55">
+<rect id="Rectangle 40_3" x="186" y="83" width="70" height="55" fill="#B3E7E7"/>
+</mask>
+<g mask="url(#mask4)">
+<path id="Rectangle 41_3" d="M186 109.018L247 109.5L253.5 136L186 136.5V109.018Z" fill="#B3E7E7"/>
+</g>
+</g>
+</g>
+<rect id="Rectangle 42" x="186" y="153" width="29" height="7" rx="3" fill="#2C2C2C"/>
+<rect id="Rectangle 43" x="38" y="66" width="200" height="3" rx="1.5" fill="#EBF8F8"/>
+<g id="bag-top">
+<rect id="Rectangle 44" x="62" y="36" width="149" height="30" rx="5" fill="#F8D24E"/>
+<rect id="Rectangle 45" x="91" y="36" width="7" height="30" fill="#AF7136"/>
+<rect id="Rectangle 46" x="175" y="36" width="7" height="30" fill="#AF7136"/>
+</g>
+<circle id="circle-3" cx="102" cy="18" r="18" fill="#CB875D"/>
+<circle id="circle-2" cx="138" cy="18" r="18" fill="#CB875D"/>
+<circle id="circle-1" cx="174" cy="18" r="18" fill="#CB875D"/>
+</g>
+</svg>
